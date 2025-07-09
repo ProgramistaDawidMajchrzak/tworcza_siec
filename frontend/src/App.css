@@ -1,0 +1,201 @@
+.content{
+    background-color: var(--background);
+    height: auto;
+}
+.special-product{
+    background: linear-gradient(to bottom right, #0050E0, #456EFF) !important;
+}
+
+.special-product .product-container .left-content h4{
+    color: white !important;
+}
+.special-product .product-container .left-content .list ul li{
+    color: white !important;
+}
+.special-product .product-container .right-box p{
+    color: white !important;
+}
+.special-product .product-container .left-box{
+    border-right: 1px solid whitesmoke !important;
+}
+.bg-right-top{
+    background-image: url('./assets/bg-ellipse.png');
+    background-position: top calc(100% - 300px) right calc(100% - 500px); 
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.bg-right{
+    background-image: url('./assets/bg-ellipse.png');
+    background-position: top right calc(100% - 500px); 
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.bg-left{
+    background-image: url('./assets/bg-ellipse.png');
+    background-position: top left calc(100% - 500px); 
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+h3{
+    margin: 0;
+    font-size: 32px;
+}
+@media (max-width: 1450px) {
+    h3{
+        font-size: 30px;
+    }
+}
+@media (max-width: 1250px) {
+    h3{
+        font-size: 28px;
+    }
+}
+@media (max-width: 1100px) {
+    h3{
+        font-size: 24px;
+    }
+}
+@media (max-width: 950px) {
+    h3{
+        font-size: 18px;
+    }
+}
+.responsive-box{
+    max-width: 1400px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    @media (max-width: 1450px) {
+        max-width: 1200px;
+    }
+    @media (max-width: 1250px) {
+        max-width: 1050px;
+    }
+    @media (max-width: 1100px) {
+        max-width: 900px;
+    }
+    @media (max-width: 950px) {
+        max-width: 800px;
+    }
+    @media (max-width: 850px) {
+        max-width: 700px;
+    }
+    @media (max-width: 750px) {
+        max-width: 90%;
+    }
+}
+.primary-button{
+    background: var(--white);
+    padding: 10px 26px;
+    border-radius: 50px;
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    width: auto;
+    border: none;
+}
+.secondary-btn{
+    background: var(--blue);
+    padding: 10px 26px;
+    border-radius: 50px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    width: auto;
+    border: none;
+}
+.form-container{
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    @media (max-width: 1250px) {
+        margin-left: 1rem;
+    }
+}
+label{
+    color: var(--white);
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 300;
+    font-size: 16px;
+}
+.form-el{
+    width: 420px;
+    margin-bottom: 1rem;
+    
+    select{
+        width: 200px !important;
+    }
+    select, textarea{
+        width: 100%;
+        border: 1px solid var(--blue);
+        padding: 11px 18px;
+        border-radius: 12px;
+        background-color: var(--inputs-bg);
+        color: var(--white);
+        resize: none;
+    }
+    @media (max-width: 1300px) {
+        textarea{
+            width: 80%;
+        }
+    }
+    @media (max-width: 500px) {
+        select, textarea{
+            width: 80%;
+        }
+    }
+    span{
+        color: white;
+    }
+}
+
+@media (max-width: 500px) {
+    .form-el{
+        width: 90%;
+    }
+}
+
+.cta-btn {
+    background: linear-gradient(90deg, #2D44AC 0%, #0580BE 100%);
+    color: white;
+    margin: .5rem 2rem;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cta-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .product-skeleton{
+    width: 1020px; 
+    height: 460px;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+  .product-layout{
+    max-width: 1250px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
