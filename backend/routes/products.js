@@ -272,79 +272,79 @@ router.get('/me/products', authenticateToken, async (req, res) => {
     }
   });
 
-  const serverConfig = {
-    host: process.env.SERVER_IP,
-    port: 22,
-    username: 'root',
-    privateKey: fs.readFileSync(process.env.PRIVATE_KEY) // np. ~/.ssh/id_rsa
-  };
+  // const serverConfig = {
+  //   host: process.env.SERVER_IP,
+  //   port: 22,
+  //   username: 'root',
+  //   privateKey: fs.readFileSync(process.env.PRIVATE_KEY) // np. ~/.ssh/id_rsa
+  // };
 
 
-  router.post('/upload-zip', authenticateToken, requireAdmin, upload.single('file'), async (req, res) => {
-    const sftp = new SftpClient();
-    const localPath = req.file.path;
-    const remotePath = `/var/www/zips/${req.file.originalname}`;
+  // router.post('/upload-zip', authenticateToken, requireAdmin, upload.single('file'), async (req, res) => {
+  //   const sftp = new SftpClient();
+  //   const localPath = req.file.path;
+  //   const remotePath = `/var/www/zips/${req.file.originalname}`;
   
-    try {
-      await sftp.connect(serverConfig);
-      await sftp.put(localPath, remotePath);
-      await sftp.end();
+  //   try {
+  //     await sftp.connect(serverConfig);
+  //     await sftp.put(localPath, remotePath);
+  //     await sftp.end();
   
-      fs.unlinkSync(localPath);
+  //     fs.unlinkSync(localPath);
   
-      res.json({ success: true, message: 'Plik wysłany na serwer!', url: `http://${serverConfig.host}/zips/${req.file.originalname}` });
-    } catch (err) {
-      console.error('Błąd uploadu:', err);
-      res.status(500).json({ success: false, message: 'Nie udało się wysłać pliku.' });
-    }
-  });
+  //     res.json({ success: true, message: 'Plik wysłany na serwer!', url: `http://${serverConfig.host}/zips/${req.file.originalname}` });
+  //   } catch (err) {
+  //     console.error('Błąd uploadu:', err);
+  //     res.status(500).json({ success: false, message: 'Nie udało się wysłać pliku.' });
+  //   }
+  // });
   
-  router.get('/zips/list', authenticateToken, requireAdmin, async (req, res) => {
-    const sftp = new SftpClient();
+  // router.get('/zips/list', authenticateToken, requireAdmin, async (req, res) => {
+  //   const sftp = new SftpClient();
   
-    // Pobierz query parametry z URL, np. /zips/list?page=1&limit=10&search=STR
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
-    const search = (req.query.search || '').toLowerCase();
+  //   // Pobierz query parametry z URL, np. /zips/list?page=1&limit=10&search=STR
+  //   const page = parseInt(req.query.page) || 1;
+  //   const limit = parseInt(req.query.limit) || 10;
+  //   const search = (req.query.search || '').toLowerCase();
   
-    try {
-      await sftp.connect(serverConfig);
-      const allFiles = await sftp.list('/var/www/zips');
+  //   try {
+  //     await sftp.connect(serverConfig);
+  //     const allFiles = await sftp.list('/var/www/zips');
   
-      // Filtrowanie po nazwie i tylko pliki .zip
-      const filteredFiles = allFiles
-        // .filter(file => file.name.endsWith('.zip'))
-        .filter(file => file.name.toLowerCase().includes(search));
+  //     // Filtrowanie po nazwie i tylko pliki .zip
+  //     const filteredFiles = allFiles
+  //       // .filter(file => file.name.endsWith('.zip'))
+  //       .filter(file => file.name.toLowerCase().includes(search));
   
-      const total = filteredFiles.length;
-      const totalPages = Math.ceil(total / limit);
-      const start = (page - 1) * limit;
-      const end = start + limit;
+  //     const total = filteredFiles.length;
+  //     const totalPages = Math.ceil(total / limit);
+  //     const start = (page - 1) * limit;
+  //     const end = start + limit;
   
-      const paginatedFiles = filteredFiles.slice(start, end).map(file => ({
-        name: file.name,
-        size: file.size,
-        modifyTime: file.modifyTime,
-        url: `http://${serverConfig.host}/zips/${file.name}`
-      }));
+  //     const paginatedFiles = filteredFiles.slice(start, end).map(file => ({
+  //       name: file.name,
+  //       size: file.size,
+  //       modifyTime: file.modifyTime,
+  //       url: `http://${serverConfig.host}/zips/${file.name}`
+  //     }));
   
-      await sftp.end();
+  //     await sftp.end();
   
-      res.json({
-        success: true,
-        zips: paginatedFiles,
-        pagination: {
-          page,
-          limit,
-          total,
-          totalPages
-        }
-      });
-    } catch (err) {
-      console.error('Błąd listowania plików ZIP:', err);
-      res.status(500).json({ success: false, message: 'Nie udało się pobrać listy plików.' });
-    }
-  });
+  //     res.json({
+  //       success: true,
+  //       zips: paginatedFiles,
+  //       pagination: {
+  //         page,
+  //         limit,
+  //         total,
+  //         totalPages
+  //       }
+  //     });
+  //   } catch (err) {
+  //     console.error('Błąd listowania plików ZIP:', err);
+  //     res.status(500).json({ success: false, message: 'Nie udało się pobrać listy plików.' });
+  //   }
+  // });
   
 
 module.exports = router;
