@@ -272,6 +272,4 @@ router.get('/me/products', authenticateToken, async (req, res) => {
     }
   });
 
-  // test
-
 module.exports = router;
