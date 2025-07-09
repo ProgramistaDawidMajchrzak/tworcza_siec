@@ -30,7 +30,7 @@ function Home() {
       <div className="responsive-box">
         <S.Hero>
           <div className="hero-text">
-            <h3 className='blue-text'>Witaj w Twórczej Sieciii,</h3>
+            <h3 className='blue-text'>Witaj w Twórczej Sieciiiii,</h3>
             <h3>Twój dedykowany partner od usług<br />internetowych</h3>
           </div>
           <img className="hero-img" src={HeroImg} alt="hero-image" />
