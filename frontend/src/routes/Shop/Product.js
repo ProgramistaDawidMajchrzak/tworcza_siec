@@ -30,7 +30,7 @@ function Product({product}) {
           <div className="right-box">
             <div className="right-content">
               <p className='descc'>{product.description}</p>
-              <img src={`http://localhost:5000${product.previewImage}`} alt="product-image" />
+              <img src={`https://tworczasiec.pl${product.previewImage}`} alt="product-image" />
               {/* <img src={ProductImg} alt="product-image" /> */}
               
               <div className="button-container">

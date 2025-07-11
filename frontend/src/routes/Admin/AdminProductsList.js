@@ -84,7 +84,7 @@ function AdminProductsList() {
                       </div>
                       <div className="image-action">
                         <div className="image">
-                          <img src={`http://localhost:5000${product.previewImage}`} alt="product-image" />
+                          <img src={`https://tworczasiec.pl${product.previewImage}`} alt="product-image" />
                         </div>
                         <div className="action">
                           <button

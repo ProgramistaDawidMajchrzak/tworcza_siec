@@ -143,7 +143,7 @@ export function Cta({product, scrollToPlans}) {
                 <button onClick={scrollToPlans} className='cta-btn'>Wybierz Swój Plan</button>
             </div>
             <div className="img-container">
-                <img src={`http://localhost:5000${product.previewImage}`} alt="product-image" />
+                <img src={`https://tworczasiec.pl${product.previewImage}`} alt="product-image" />
             </div>
         </S.Cta>
     )

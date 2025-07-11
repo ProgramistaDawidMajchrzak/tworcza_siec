@@ -5,12 +5,22 @@ const { PrismaClient } = require('@prisma/client');
 const { authenticateToken, requireAdmin } = require('../middleware/authMiddleware');
 const prisma = new PrismaClient();
 
-const multer = require('multer');
-const SftpClient = require('ssh2-sftp-client');
 const path = require('path');
-const fs = require('fs');
+const crypto = require('crypto');
+const multer = require('multer');
 
-const upload = multer({ dest: 'uploads/' });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, '../uploads')); // upewnij się, że ścieżka jest dobra
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname); // np. ".webp"
+    const uniqueName = crypto.randomBytes(16).toString('hex') + ext;
+    cb(null, uniqueName);
+  }
+});
+
+const upload = multer({ storage });
 
 // GET all products (public)
 router.get('/', async (req, res) => {
