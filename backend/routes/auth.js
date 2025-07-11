@@ -84,24 +84,24 @@ router.get('/me', authenticateTokenCookie, async (req, res) => {
 // });
 
 
-// router.post('/register-admin', async (req, res) => {
-//     const { email, password } = req.body;
+router.post('/register-admin', async (req, res) => {
+    const { email, password } = req.body;
   
-//     const existing = await prisma.user.findUnique({ where: { email } });
-//     if (existing) return res.status(400).json({ message: 'Email already in use' });
+    const existing = await prisma.user.findUnique({ where: { email } });
+    if (existing) return res.status(400).json({ message: 'Email already in use' });
   
-//     const hashed = await bcrypt.hash(password, 10);
+    const hashed = await bcrypt.hash(password, 10);
   
-//     const user = await prisma.user.create({
-//       data: {
-//         email,
-//         password: hashed,
-//         role: 'admin'
-//       }
-//     });
+    const user = await prisma.user.create({
+      data: {
+        email,
+        password: hashed,
+        role: 'admin'
+      }
+    });
   
-//     res.status(201).json({ message: 'Admin user created', user });
-//   });
+    res.status(201).json({ message: 'Admin user created', user });
+  });
 
 // GET /users?search=email@example.com&page=1&limit=10
 router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
