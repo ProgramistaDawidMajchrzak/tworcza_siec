@@ -581,6 +581,7 @@ export const PlansSection = styled.div`
         gap: 2rem;
         justify-content: center;
         align-items: flex-start;
+        margin-top: 1rem;
         .plan-el{
             width: 360px;
             border-radius: 12px;
