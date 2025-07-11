@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const request = axios.create({
-    baseURL: 'https://128.140.40.152:3001/api',
+    baseURL: 'https://tworczasiec.pl/api',
 });
 
 
