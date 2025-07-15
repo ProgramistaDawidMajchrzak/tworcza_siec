@@ -145,8 +145,9 @@ export const HomepageProducts = styled.div`
                 max-width: 350px;
             }
             .phone{
-                top: -70px;
-                max-width: 300px;
+                top: -50px;
+                left: 80px;
+                max-width: 280px;
             }
         }
         @media (max-width: 400px) {
@@ -157,7 +158,6 @@ export const HomepageProducts = styled.div`
             }
             .phone{
                 top: -70px;
-                left: 120px;
                 max-width: 250px;
             }
         }
