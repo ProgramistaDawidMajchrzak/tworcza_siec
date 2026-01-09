@@ -122,7 +122,7 @@ function Shop() {
                 value="Sklep Internetowy"
               />
             </div>
-            <Title 
+            {/* <Title 
               style={{color: "var(--blue)", marginTop: "2rem"}}  
               title="Szukaj"
             />
@@ -135,7 +135,7 @@ function Shop() {
                 value="Zastosuj"
                 // onClick={applyFilters}
               />
-            </div>
+            </div> */}
           </div>
           <div className="shop-box">
           {(products && products.length !== 0) &&

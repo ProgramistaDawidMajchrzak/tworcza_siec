@@ -9,6 +9,8 @@ import Info from '../../assets/icons/Info.svg';
 import { HomepageText, Underline, WhyUsSection } from '../HomePage/style';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { useNavigate } from "react-router-dom";
+
 
 export function ProductVisualization({url}) {
 
@@ -150,7 +152,9 @@ export function Cta({product, scrollToPlans}) {
 }
 
 export function PlansSection({product}) {
+    const navigate = useNavigate();
     const financing = product.financing
+    
     return (
         <S.PlansSection>
             <HomepageText>
@@ -184,7 +188,12 @@ export function PlansSection({product}) {
                             <li>Dostęp do Panelu Klienta <img src={Info} alt="more info icon" /></li>
                         </ul>
                         <div className="button-container">
-                            <button className='cta-btn'>Wybierz</button>
+                            <button
+                                className="cta-btn"
+                                onClick={() => navigate(`/checkout/${product.id}?plan=${encodeURIComponent(f.name)}`)}
+                            >
+                                Wybierz
+                            </button>
                         </div>
                     </div>
 

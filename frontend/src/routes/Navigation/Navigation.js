@@ -15,6 +15,10 @@ function Navigation() {
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const isLoggedIn = !!localStorage.getItem("accessToken");
+    const accountPath = isLoggedIn ? "/account" : "/login";
+
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -67,6 +71,10 @@ function Navigation() {
                     <S.Menu className={isMenuOpen ? 'open' : ''}>
                         <NavLink id="link" to='/nowosci' onClick={() => setIsMenuOpen(false)}>Nowości</NavLink>
                         <NavLink id="link" to='/wycena' onClick={() => setIsMenuOpen(false)}>Wycena</NavLink>
+                        <NavLink id="link" to={accountPath} onClick={() => setIsMenuOpen(false)}>
+                            {isLoggedIn ? "Moje konto" : "Zaloguj"}
+                        </NavLink>
+
                         <NavLink to='/sklep' onClick={() => setIsMenuOpen(false)}>
                             <Button type='button' value='Sklep' />
                         </NavLink>

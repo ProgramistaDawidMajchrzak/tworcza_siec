@@ -8,12 +8,16 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  password  String
-  role      String    @default("client")
-  purchases Purchase[]
-  createdAt DateTime  @default(now())
+  id              Int       @id @default(autoincrement())
+  email           String    @unique
+  password        String
+  role            String    @default("client")
+  purchases       Purchase[]
+  createdAt       DateTime  @default(now())
+
+  emailVerified   Boolean   @default(false)
+  verifyTokenHash String?
+  verifyTokenExp  DateTime?
 
   @@map("users")
 }

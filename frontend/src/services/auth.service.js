@@ -1,5 +1,18 @@
 import request from './request';
 
+
+export const registerClient = async (body) => {
+  const response = await request.post('/auth/register-client', body);
+  return response.data;
+};
+
+export const resendVerification = async (body) => {
+  const response = await request.post('/auth/resend-verification', body);
+  return response.data;
+};
+
+
+
 export const login = async (body) => {
     try {
         const response = await request.post('/auth/login', body);
